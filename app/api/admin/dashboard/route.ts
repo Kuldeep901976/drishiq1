@@ -71,8 +71,8 @@ async function getOverviewData() {
   const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
   const sixtyDaysAgo = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
 
-  const currentPeriodInvitations = invitations?.filter(inv => new Date(inv.created_at) >= thirtyDaysAgo).length || 0;
-  const previousPeriodInvitations = invitations?.filter(inv => {
+  const currentPeriodInvitations = invitations?.filter((inv: any) => new Date(inv.created_at) >= thirtyDaysAgo).length || 0;
+  const previousPeriodInvitations = invitations?.filter((inv: any) => {
     const created = new Date(inv.created_at);
     return created >= sixtyDaysAgo && created < thirtyDaysAgo;
   }).length || 0;
@@ -174,7 +174,7 @@ async function getMonthlyTrendData(timeframe: string) {
   // Group by month
   const monthlyData: Record<string, { invitations: number; types: Record<string, number> }> = {};
   
-  invitations?.forEach(invitation => {
+  invitations?.forEach((invitation: any) => {
     const date = new Date(invitation.created_at);
     const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
     

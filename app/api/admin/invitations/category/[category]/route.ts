@@ -82,7 +82,7 @@ export async function GET(
     if (error) throw error;
 
     // Transform data for frontend
-    const transformedInvitations = invitations?.map(invitation => ({
+    const transformedInvitations = invitations?.map((invitation: any) => ({
       ...invitation,
       credits_allocated: invitation.credits?.[0]?.credits_allocated || 0,
       credits_used: invitation.credits?.[0]?.credits_used || 0,

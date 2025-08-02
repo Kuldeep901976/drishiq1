@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     // Transform data for frontend
-    const transformedTestimonials = testimonials?.map(invitation => ({
+    const transformedTestimonials = testimonials?.map((invitation: any) => ({
       id: invitation.id,
       name: invitation.name,
       email: invitation.email,

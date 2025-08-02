@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate category if specified
-    if (category && invitations.some(inv => inv.category !== category)) {
+    if (category && invitations.some((inv: any) => inv.category !== category)) {
       return NextResponse.json(
         { error: 'All invitations must be from the same category' },
         { status: 400 }

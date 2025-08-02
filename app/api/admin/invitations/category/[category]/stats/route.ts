@@ -61,16 +61,16 @@ export async function GET(
     // Calculate statistics
     const stats = {
       total: invitations?.length || 0,
-      pending: invitations?.filter(inv => inv.status === 'pending').length || 0,
-      approved: invitations?.filter(inv => inv.status === 'approved').length || 0,
-      used: invitations?.filter(inv => inv.status === 'used').length || 0,
-      expired: invitations?.filter(inv => inv.status === 'expired').length || 0,
+      pending: invitations?.filter((inv: any) => inv.status === 'pending').length || 0,
+      approved: invitations?.filter((inv: any) => inv.status === 'approved').length || 0,
+      used: invitations?.filter((inv: any) => inv.status === 'used').length || 0,
+      expired: invitations?.filter((inv: any) => inv.status === 'expired').length || 0,
       creditsAllocated: 0,
       creditsUsed: 0
     };
 
     // Calculate credit statistics
-    invitations?.forEach(invitation => {
+    invitations?.forEach((invitation: any) => {
       const credit = invitation.credits?.[0];
       if (credit) {
         stats.creditsAllocated += credit.credits_allocated || 0;

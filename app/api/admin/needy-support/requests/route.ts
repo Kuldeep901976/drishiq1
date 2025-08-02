@@ -44,7 +44,7 @@ export async function GET() {
     }
 
     // Transform data for frontend
-    const transformedRequests = requests?.map(request => ({
+    const transformedRequests = requests?.map((request: any) => ({
       id: request.id,
       needy_individual_id: request.needy_individual_id,
       needy_name: request.needy_individuals?.full_name || 'Unknown',

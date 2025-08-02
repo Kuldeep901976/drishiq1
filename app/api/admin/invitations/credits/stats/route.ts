@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    creditStats?.forEach(credit => {
+    creditStats?.forEach((credit: any) => {
       const category = credit.invitation?.category || 'general';
       const allocated = credit.credits_allocated || 0;
       const used = credit.credits_used || 0;

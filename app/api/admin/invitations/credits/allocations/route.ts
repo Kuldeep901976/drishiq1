@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     // Transform data for frontend
-    const transformedAllocations = allocations?.map(allocation => ({
+    const transformedAllocations = allocations?.map((allocation: any) => ({
       id: allocation.id,
       invitationId: allocation.invitation_id,
       invitationName: allocation.invitation?.name || 'Unknown',

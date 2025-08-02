@@ -34,23 +34,23 @@ export async function GET(request: NextRequest) {
     console.log('Sample invitation data:', invitations?.[0]);
 
     // Log invitation types found
-    const types = invitations?.map(i => i.invitation_type) || [];
+    const types = invitations?.map((i: any) => i.invitation_type) || [];
     console.log('Invitation types found:', [...new Set(types)]);
 
     // Log statuses found
-    const statuses = invitations?.map(i => i.status) || [];
+    const statuses = invitations?.map((i: any) => i.status) || [];
     console.log('Statuses found:', [...new Set(statuses)]);
 
     const stats = {
       total: invitations?.length || 0,
-      pending: invitations?.filter(i => i.status === 'pending').length || 0,
-      approved: invitations?.filter(i => i.status === 'approved').length || 0,
-      used: invitations?.filter(i => i.status === 'used').length || 0,
-      expired: invitations?.filter(i => i.status === 'expired').length || 0,
-      trial: invitations?.filter(i => i.invitation_type === 'trial').length || 0,
-      needSupport: invitations?.filter(i => i.invitation_type === 'need_support').length || 0,
-      testimonials: invitations?.filter(i => i.invitation_type === 'testimonials').length || 0,
-      bulkUploaded: invitations?.filter(i => i.invitation_type === 'bulk_uploaded').length || 0
+      pending: invitations?.filter((i: any) => i.status === 'pending').length || 0,
+      approved: invitations?.filter((i: any) => i.status === 'approved').length || 0,
+      used: invitations?.filter((i: any) => i.status === 'used').length || 0,
+      expired: invitations?.filter((i: any) => i.status === 'expired').length || 0,
+      trial: invitations?.filter((i: any) => i.invitation_type === 'trial').length || 0,
+      needSupport: invitations?.filter((i: any) => i.invitation_type === 'need_support').length || 0,
+      testimonials: invitations?.filter((i: any) => i.invitation_type === 'testimonials').length || 0,
+      bulkUploaded: invitations?.filter((i: any) => i.invitation_type === 'bulk_uploaded').length || 0
     };
 
     console.log('Stats calculated:', stats);
