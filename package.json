@@ -1,0 +1,58 @@
+{
+  "name": "drishiq",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.1",
+    "@capacitor/cli": "^7.4.1",
+    "@capacitor/core": "^7.4.1",
+    "@capacitor/ios": "^7.4.1",
+    "@formatjs/intl-localematcher": "^0.6.1",
+    "@stripe/stripe-js": "^7.4.0",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/supabase-js": "^2.50.4",
+    "@types/negotiator": "^0.6.4",
+    "csv-parse": "^6.1.0",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.0",
+    "firebase": "^11.10.0",
+    "framer-motion": "^12.23.3",
+    "nanoid": "^5.1.5",
+    "negotiator": "^1.0.0",
+    "next": "14.1.0",
+    "next-pwa": "^5.6.0",
+    "node-fetch": "^3.3.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-quill": "^2.0.0",
+    "react-youtube": "^10.1.0",
+    "stripe": "^18.3.0",
+    "twilio": "^5.7.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/node": "^20",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-youtube": "^7.10.0",
+    "@types/uuid": "^10.0.0",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}

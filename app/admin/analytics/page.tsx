@@ -1,7 +1,7 @@
 'use client';
 
 import Footer from '@/components/Footer';
-import Header from '@/components/HeaderUpdated';
+import Header from '@/components/Header';
 import { logger } from '@/lib/logger';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';

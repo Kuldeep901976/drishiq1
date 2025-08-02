@@ -1,0 +1,152 @@
+// UI Translations - Static interface elements
+export const UI_TRANSLATIONS: Record<string, string> = {
+  // Header
+  'header.home': 'Home',
+  'header.about': 'About',
+  'header.features': 'Features',
+  'header.blog': 'Blog',
+  'header.testimonials': 'Testimonials',
+  'header.support': 'Support',
+  'header.signin': 'Sign In',
+  'header.signup': 'Sign Up',
+  'header.tagline': 'Intelligence of Perception',
+  'header.startSession': 'Start Session',
+  
+  // Hero Section
+  'hero.experience': '✨ Experience DrishiQ',
+  'hero.startJourney': '✨ Start Your Journey',
+  'hero.experienceDrishiQ': '✨ Experience DrishiQ',
+  'hero.getStartedToday': '✨ Get Started Today',
+  'hero.transformTitle': 'Transform Your Perspective',
+  'hero.transformSubtitle': 'From confusion to clarity, one conversation at a time',
+  'hero.transformDescription': 'Join thousands who have found new insights and breakthroughs through DrishiQ\'s unique approach.',
+  'hero.discoverSubtitle': 'Unlock your potential with guided self-inquiry',
+  'hero.discoverDescription': 'DrishiQ helps you explore your thoughts systematically and find clarity in complex situations.',
+  
+  // Motivational Lines
+  'motivation.line1': 'Sometimes, all you know is that something feels off — but not why.',
+  'motivation.line2': 'Other times, you know the problem, but not the way out.',
+  'motivation.line3': 'Clarity isn\'t found — it\'s created.',
+  
+  // About Section
+  'about.title': 'About DrishiQ',
+  'about.description': 'DrishiQ is your companion for self-discovery, clarity, and growth. Our platform blends science, technology, and human insight to help you see through challenges and make confident decisions.',
+  'about.subtitle': 'Discover a new way to understand yourself and the world around you.',
+  
+  // Areas We Help
+  'areas.title': '🎯 Areas We Help',
+  'areas.explore': 'Explore how DrishiQ can help you.',
+  'areas.startNow': '✨ Start Now',
+  'areas.overthinking': '"Breaking the loop of overthinking"',
+  'areas.lifeDirection': '"Not sure what I want in life"',
+  'areas.expectations': '"Everyone expects something different from me"',
+  'areas.judgment': '"I can\'t talk without feeling judged"',
+  'areas.skills': '"Improving my tennis forehand"',
+  'areas.career': '"Preparing for a senior job interview"',
+  'areas.science': '"Good at science, but don\'t know what\'s next"',
+  'areas.relationships': '"Not sure if I should continue my marriage"',
+  
+  // Features
+  'features.title': '🚀 Features',
+  'features.multilingual.title': 'Multilingual, Emotion-Aware Conversations',
+  'features.multilingual.description': 'DrishiQ adapts to your language and emotional tone — making clarity accessible across cultures and moments.',
+  'features.multilingual.badge': '🌍 Multilingual',
+  'features.clarity.title': 'Clarity-First, Not Advice-First',
+  'features.clarity.description': 'It doesn\'t tell you what to do. It explores it with you — through structured, reflective conversation. It\'s clarity created, not imposed.',
+  'features.clarity.badge': '🧭 Clarity-First',
+  'features.cause.title': 'Cause-Based Matching Between Seekers and Supporters',
+  'features.cause.description': 'DrishiQ lets people who care fund the clarity of those in need — not through charity, but shared purpose.',
+  'features.cause.badge': '🤝 Cause-Based',
+  
+  // Support Section
+  'support.title': 'Someone\'s stuck - You can help them move.',
+  'support.description': 'There are people quietly struggling — A migrant worker torn between survival and home, A chai vendor\'s ambition clouded with self-doubt, A jobless father too ashamed to go home, A mother watching her daughter slip away in silence, a son unsure of his potential and so on.',
+  'support.subtitle': 'DrishiQ offers clarity to those in need - but we can\'t do it alone.',
+  'support.byChoosing': 'By choosing to support, you:',
+  'support.coverCredit': 'Cover a discounted session credit',
+  'support.passOn': 'Pass it on to someone who truly needs it',
+  'support.bringRelief': 'Bring relief, direction, and dignity',
+  'support.funding': 'You\'re not just funding sessions — you\'re fueling someone\'s next step.',
+  'support.button': '✨ Fuel a Session, Fuel a Life',
+  
+  // Blog
+  'blog.title': '📚 Blog',
+  'blog.seeMore': '✨ See More Articles',
+  'blog.readMore': 'Read More →',
+  'blog.loading': 'Loading blog posts...',
+  'blog.noPosts': 'No blog posts available for the landing page.',
+  'blog.author': 'Team DrishiQ',
+  'blog.category.personalGrowth': 'Personal Growth',
+  'blog.category.productivity': 'Productivity',
+  'blog.tags.clarity': 'Clarity',
+  'blog.tags.reflection': 'Reflection',
+  'blog.tags.emotionalIntelligence': 'Emotional Intelligence',
+  'blog.tags.decisionMaking': 'Decision Making',
+  'blog.tags.mentalHealth': 'Mental Health',
+  
+  // Testimonials
+  'testimonials.title': '💬 What People Say',
+  'testimonials.subtitle': 'Real stories. Real shifts.',
+  'testimonials.explore': 'Explore their journeys',
+  'testimonials.share': '✨ Share Your Experience',
+  'testimonials.category': 'Community',
+  'testimonials.timeAgo': '• 3 days ago',
+  'testimonials.sarah.name': 'Sarah Chen',
+  'testimonials.sarah.role': 'Marketing Professional',
+  'testimonials.sarah.quote': 'DrishiQ helped me see through my daily challenges with such clarity. The multilingual support made it accessible for my entire family. I finally found the perspective I needed.',
+  'testimonials.michael.name': 'Michael Rodriguez',
+  'testimonials.michael.role': 'Software Engineer',
+  'testimonials.michael.quote': 'Instead of giving me advice, DrishiQ helped me explore my own thoughts. It\'s like having a wise friend who asks the right questions. Game-changer for decision-making.',
+  'testimonials.priya.name': 'Priya Patel',
+  'testimonials.priya.role': 'Healthcare Worker',
+  'testimonials.priya.quote': 'The cause-based matching is incredible. I feel like I\'m part of something bigger when I support others through DrishiQ. It\'s not just about me anymore.',
+  
+  // Footer
+  'footer.terms': 'Terms & Conditions / Privacy Policy',
+  'footer.contact': 'Contact: support@drishiq.com',
+  'footer.selectLanguage': 'Select Language',
+  'footer.cancel': 'Cancel',
+  
+  // CTA
+  'cta.title': '🎯 Ready to See Through the Challenge?',
+  'cta.description': 'Join DrishiQ and start your journey of self-discovery and growth today.',
+  'cta.button': '✨ Get Started',
+  
+  // Bridge Section
+  'bridge.title': '🌉 The Bridge Between Need and Purpose',
+  'bridge.description': 'Some people are seeking clarity and Some people are driven to support it.',
+  'bridge.subtitle': 'At DrishiQ, we\'ve built a bridge between them.',
+  'bridge.supportSomeone.title': 'Someone out there is stuck',
+  'bridge.supportSomeone.description': 'you can be the quiet support that helps them begin to see through it.',
+  'bridge.supportSomeone.subtitle': '🤲 Choose a cause that moves you, or let us match your support with someone who needs it most.',
+  'bridge.supportSomeone.button': '✨ Selfless Support',
+  'bridge.needClarity.title': 'If you\'re navigating anxiety, confusion, burnout, or identity shifts and can\'t afford help — we hear you.',
+  'bridge.needClarity.subtitle': '💙 Share what you\'re facing — and we\'ll try to match you with someone who believes in that very journey.',
+  'bridge.needClarity.button': '✨ Need Support',
+  'bridge.footer': '🤝 Clarity isn\'t charity. It\'s connection.',
+  
+  // Common
+  'common.loading': 'Loading...',
+  'common.error': 'Error',
+  'common.success': 'Success',
+  'common.cancel': 'Cancel',
+  'common.save': 'Save',
+  'common.delete': 'Delete',
+  'common.edit': 'Edit',
+  'common.add': 'Add',
+  'common.submit': 'Submit',
+  'common.back': 'Back',
+  'common.next': 'Next',
+  'common.previous': 'Previous',
+  'common.close': 'Close',
+  'common.open': 'Open',
+  'common.search': 'Search',
+  'common.filter': 'Filter',
+  'common.sort': 'Sort',
+  'common.refresh': 'Refresh',
+  'common.retry': 'Retry',
+  'common.confirm': 'Confirm',
+  'common.yes': 'Yes',
+  'common.no': 'No',
+  'common.ok': 'OK'
+}; 

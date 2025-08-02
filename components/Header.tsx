@@ -15,7 +15,7 @@ interface DropdownMenu {
   options: DropdownOption[];
 }
 
-const HeaderUpdated: React.FC = () => {
+const Header: React.FC = () => {
   const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const context = useLanguage();
@@ -60,9 +60,9 @@ const HeaderUpdated: React.FC = () => {
     'choose-path': {
       label: 'Choose Your Path',
       options: [
-        { label: '🚪 Access Clarity', action: () => router.push('/sessions') },
-        { label: '🎁 Gift Clarity', action: () => router.push('/payment') },
-        { label: '🤝 Support Others', action: () => router.push('/support-details') }
+        { label: '🚪 Access Clarity', action: () => router.push('/priceplan-enhanced') },
+        { label: '🎁 Gift Clarity', action: () => router.push('/priceplan-enhanced') },
+        { label: '🤝 Support Others', action: () => router.push('/priceplan-enhanced') }
       ]
     },
     'unfiltered': {
@@ -131,10 +131,10 @@ const HeaderUpdated: React.FC = () => {
      setShowProfileDropdown(!showProfileDropdown);
    };
 
-          const openQRPopup = () => {
-       const qrWin = window.open("/assets/drishiq_signup_qr_drishiq_green.png", "_blank", "width=500,height=500");
-       if (qrWin) qrWin.focus();
-     };
+                     const openQRPopup = () => {
+        const qrWin = window.open("/drishiq_signup_qr.png", "_blank", "width=500,height=500");
+        if (qrWin) qrWin.focus();
+      };
 
   const handleProfileMenuItemClick = (action: string) => {
     switch (action) {
@@ -171,19 +171,32 @@ const HeaderUpdated: React.FC = () => {
     setShowProfileDropdown(false);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    // Check if we're on the landing page
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to landing page with section hash
+      router.push(`/#${sectionId}`);
+    }
+  };
+
   const handleMenuItemClick = (action: string) => {
     switch (action) {
       case 'support':
-        router.push('/support-details');
+        scrollToSection('support-privilege');
         break;
       case 'blog':
-        router.push('/blog');
+        scrollToSection('blog-insights');
         break;
       case 'voices':
-        router.push('/testimonials');
+        scrollToSection('testimonials-usersay');
         break;
       case 'bridge':
-        router.push('/support-in-need');
+        scrollToSection('clarity-anchor');
         break;
       default:
         break;
@@ -192,29 +205,32 @@ const HeaderUpdated: React.FC = () => {
 
   return (
     <>
-             <style dangerouslySetInnerHTML={{
-         __html: `
-           html, body {
-             margin: 0;
-             padding: 0;
-             overflow-x: hidden;
-             height: 100%;
-           }
-                     .drishiq-header {
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             padding: 14px;
-             border-bottom: 1px solid #ccc;
-             font-family: 'Poppins', sans-serif;
-             background-color: #F8F6F4;
-                           height: 72px;
-              position: fixed;
-              top: 0;
-              left: 0;
-              right: 0;
-              z-index: 1000;
+                                                       <style dangerouslySetInnerHTML={{
+           __html: `
+             /* Version: ${Date.now()} */
+             @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji:wght@400&display=swap');
+             @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+            html, body {
+              margin: 0;
+              padding: 0;
+              overflow-x: hidden;
+              height: 100%;
             }
+                                                                                                                                                                                                                                                               .drishiq-header {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 0 0 0 32px;
+               border-bottom: 1px solid #ccc;
+               font-family: 'Poppins', sans-serif;
+               background-color: #F8F6F4;
+               height: 100px !important;
+               position: sticky;
+               top: 0;
+               left: 0;
+               right: 0;
+               z-index: 1000;
+             }
           .header-left {
             flex: 1;
             display: flex;
@@ -222,33 +238,34 @@ const HeaderUpdated: React.FC = () => {
             justify-content: flex-start;
             align-items: flex-start;
           }
-          .logo {
-            height: 40px;
-            margin-bottom: 0px;
-            align-self: flex-start;
-          }
-          .tagline {
-            font-size: 15px;
-            color: #0B4422;
-            margin-top: -2px;
-            margin-left: 12px;
-          }
+                     .logo {
+             height: 40px;
+             margin-bottom: 0px;
+             align-self: flex-start;
+           }
+                     .tagline {
+             font-size: 15px;
+             color: #0B4422;
+             margin-top: -2px;
+             margin-left: 12px;
+           }
           .header-center {
             flex: 3;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             position: relative;
-            padding-bottom: 6px;
+            padding-bottom: 0;
           }
-                     .nav-menu {
-             display: flex;
-             gap: 40px;
-             font-size: 14px;
-             font-weight: 500;
-             color: #0B4422;
-             align-items: flex-end;
-           }
+                                           .nav-menu {
+              display: flex;
+              gap: 40px;
+              font-size: 14px;
+              font-weight: 500;
+              color: #0B4422;
+              align-items: flex-end;
+              margin-top: 62px;
+            }
                                            .nav-label {
               cursor: pointer;
               text-align: center;
@@ -310,34 +327,48 @@ const HeaderUpdated: React.FC = () => {
             align-items: center;
             justify-content: center;
           }
-                     .language-selector {
-             margin-bottom: 8px;
-             border-radius: 12px;
-             padding: 8px 16px;
-             background: linear-gradient(145deg, #ffffff, #e6e6e6);
-             box-shadow: 
-               4px 4px 8px #d1d1d1,
-               -4px -4px 8px #ffffff,
-               inset 1px 1px 2px rgba(255,255,255,0.7),
-               inset -1px -1px 2px rgba(0,0,0,0.1);
-             border: none;
-             cursor: pointer;
-             transition: all 0.3s ease;
-             font-weight: 500;
-             color: #0B4422;
-           }
+                                                                                                                                                                                   .language-selector {
+               margin-bottom: 8px;
+               border-radius: 12px;
+               padding: 4px 10px;
+               background: linear-gradient(145deg, #ffffff, #e6e6e6);
+               box-shadow: 
+                 4px 4px 8px #d1d1d1,
+                 -4px -4px 8px #ffffff,
+                 inset 1px 1px 2px rgba(255,255,255,0.7),
+                 inset -1px -1px 2px rgba(0,0,0,0.1);
+               border: none;
+               cursor: pointer;
+               transition: all 0.3s ease;
+               font-weight: 500;
+               color: #0B4422;
+               font-size: 13px;
+               min-width: 80px;
+             }
            
-           .language-selector option {
-             background: white;
-             color: #0B4422;
-           }
-           
-           .language-selector option:hover,
-           .language-selector option:focus,
-           .language-selector option:checked {
-             background: #0B4422;
-             color: white;
-           }
+                       .language-selector option {
+              background: white !important;
+              color: #0B4422 !important;
+              padding: 8px 12px;
+              border: none;
+              outline: none;
+            }
+            
+                                    .language-selector option:hover,
+            .language-selector option:focus {
+              background: #0B4422 !important;
+              color: white !important;
+              border: none;
+              outline: none;
+            }
+            
+            .language-selector option:checked,
+            .language-selector option:selected {
+              background: white !important;
+              color: #0B4422 !important;
+              border: none;
+              outline: none;
+            }
                        .language-selector:hover {
               transform: translateY(-2px);
               box-shadow: 
@@ -360,27 +391,35 @@ const HeaderUpdated: React.FC = () => {
           position: relative;
           display: inline-block;
           }  
-                     .profile-icon {
-             margin-top: 4px;
-             padding: 0;
-             border-radius: 50%;
-             background: linear-gradient(145deg, #ffffff, #e6e6e6);
-             box-shadow: 
-               8px 8px 16px #d1d1d1,
-               -8px -8px 16px #ffffff,
-               inset 2px 2px 4px rgba(255,255,255,0.7),
-               inset -2px -2px 4px rgba(0,0,0,0.1);
-             cursor: pointer;
-             width: 50px;
-             height: 50px;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             overflow: hidden;
-             border: 2px solid #f0f0f0;
-             transition: all 0.3s ease;
-             position: relative;
-           }
+                                                                                                                                       .profile-icon {
+                margin-top: 4px;
+                padding: 0;
+                border-radius: 50%;
+                background: linear-gradient(145deg, #ffffff, #e6e6e6);
+                box-shadow: 
+                  6px 6px 12px #d1d1d1,
+                  -6px -6px 12px #ffffff,
+                  inset 1px 1px 2px rgba(255,255,255,0.7),
+                  inset -1px -1px 2px rgba(0,0,0,0.1);
+                cursor: pointer;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border: 2px solid #f0f0f0;
+                transition: all 0.3s ease;
+                position: relative;
+                margin: 0 auto;
+              }
+              
+              .profile-icon-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+              }
           .profile-icon:hover {
             transform: translateY(-2px);
             box-shadow: 
@@ -407,16 +446,18 @@ const HeaderUpdated: React.FC = () => {
           .profile-dropdown.show {
             display: block !important;
           }
-                     .profile-header {
-             text-align: center;
-             padding: 8px 0.25rem 0.25rem 0.25rem;
-             margin-bottom: -4px;
-           }
+                                                                                                                                                                               .profile-header {
+                text-align: center;
+                padding: 8px 0.25rem 0.25rem 0.25rem;
+                margin-bottom: -24px;
+              }
           .profile-header img {
             width: 70px;
             height: 70px;
             border-radius: 50%;
             object-fit: cover;
+            display: block;
+            margin: 0 auto;
           }
           .profile-header div {
             font-size: 0.85rem;
@@ -452,24 +493,24 @@ const HeaderUpdated: React.FC = () => {
             font-size: 0.95rem;
             color: #0B4422;
           }
-                     .profile-item {
-             padding: 8px 16px;
-             font-size: 0.9rem;
-             cursor: pointer;
-             display: flex;
-             align-items: center;
-             color: #0B4422;
-             border-bottom: 1px solid #f5f5f5;
-             background: linear-gradient(145deg, #ffffff, #f8f8f8);
-             margin: 2px 6px;
-             border-radius: 8px;
-             transition: all 0.3s ease;
-             box-shadow: 
-               2px 2px 4px #e0e0e0,
-               -2px -2px 4px #ffffff,
-               inset 1px 1px 2px rgba(255,255,255,0.7),
-               inset -1px -1px 2px rgba(0,0,0,0.05);
-           }
+                                           .profile-item {
+              padding: 6px 14px;
+              font-size: 0.9rem;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              color: #0B4422;
+              border-bottom: 1px solid #f5f5f5;
+              background: linear-gradient(145deg, #ffffff, #f8f8f8);
+              margin: 2px 6px;
+              border-radius: 8px;
+              transition: all 0.3s ease;
+              box-shadow: 
+                2px 2px 4px #e0e0e0,
+                -2px -2px 4px #ffffff,
+                inset 1px 1px 2px rgba(255,255,255,0.7),
+                inset -1px -1px 2px rgba(0,0,0,0.05);
+            }
            .profile-item:hover {
              transform: translateY(-2px);
              box-shadow: 
@@ -508,8 +549,16 @@ const HeaderUpdated: React.FC = () => {
             width={200} 
             height={40} 
             className="logo"
+            style={{ cursor: 'pointer' }}
+            onClick={() => scrollToSection('about')}
           />
-          <div className="tagline">Intelligence of Perception</div>
+          <div 
+            className="tagline" 
+            style={{ cursor: 'pointer' }}
+            onClick={() => scrollToSection('about')}
+          >
+            Intelligence of Perception
+          </div>
         </div>
 
         {/* Center: Navigation */}
@@ -627,30 +676,30 @@ const HeaderUpdated: React.FC = () => {
 
         {/* Right: Language Selector + Profile Icon */}
         <div className="header-right">
-          <select 
-            className="language-selector"
-            value={selectedLanguage}
-            onChange={(e) => handleLanguageChange(e.target.value)}
-            aria-label="Select language"
-          >
-            <option value="en">🌐 English</option>
-            <option value="hi">🇮🇳 हिंदी / Hindi</option>
-            <option value="bn">🇧🇩 বাংলা / Bengali</option>
-            <option value="ta">🇮🇳 தமிழ் / Tamil</option>
-            <option value="te">🇮🇳 తెలుగు / Telugu</option>
-            <option value="mr">🇮🇳 मराठी / Marathi</option>
-            <option value="es">🇪🇸 Español / Spanish</option>
-            <option value="fr">🇫🇷 Français / French</option>
-            <option value="de">🇩🇪 Deutsch / German</option>
-            <option value="pt">🇵🇹 Português / Portuguese</option>
-            <option value="it">🇮🇹 Italiano / Italian</option>
-            <option value="nl">🇳🇱 Nederlands / Dutch</option>
-            <option value="ru">🇷🇺 Русский / Russian</option>
-            <option value="zh">🇨🇳 中文 / Chinese</option>
-            <option value="ja">🇯🇵 日本語 / Japanese</option>
-            <option value="ko">🇰🇷 한국어 / Korean</option>
-            <option value="ar">🇸🇦 العربية / Arabic</option>
-          </select>
+                     <select 
+             className="language-selector"
+             value={selectedLanguage}
+             onChange={(e) => handleLanguageChange(e.target.value)}
+             aria-label="Select language"
+           >
+             <option value="en">English</option>
+             <option value="hi">हिंदी</option>
+             <option value="bn">বাংলা</option>
+             <option value="ta">தமிழ்</option>
+             <option value="te">తెలుగు</option>
+             <option value="mr">मराठी</option>
+             <option value="es">Español</option>
+             <option value="fr">Français</option>
+             <option value="de">Deutsch</option>
+             <option value="pt">Português</option>
+             <option value="it">Italiano</option>
+             <option value="nl">Nederlands</option>
+             <option value="ru">Русский</option>
+             <option value="zh">中文</option>
+             <option value="ja">日本語</option>
+             <option value="ko">한국어</option>
+             <option value="ar">العربية</option>
+           </select>
           
              <div className="profile-wrapper"
              onMouseEnter={handleProfileMouseEnter}
@@ -681,61 +730,61 @@ const HeaderUpdated: React.FC = () => {
                  />
                </div>
               
-                                                                            <div className="qr-code" onClick={openQRPopup}>
-                   <Image 
-                     src="/assets/drishiq_signup_qr_drishiq_green.png" 
-                     alt="Drishiq Signup QR" 
-                     width={24} 
-                     height={24}
-                     className="qr-code-image"
-                   />
-                   <span onClick={openQRPopup}>Sign Up</span>
-                 </div>
+                                                                                                                                                                                                                     <div className="qr-code" onClick={openQRPopup}>
+                     <Image 
+                       src="/drishiq_signup_qr.png" 
+                       alt="Drishiq Signup QR" 
+                       width={24} 
+                       height={24}
+                       className="qr-code-image"
+                     />
+                     <span onClick={openQRPopup}>Sign Up</span>
+                   </div>
 
-                             <div className="profile-item" onClick={() => handleProfileMenuItemClick('signin')}>
-                 <Image src="/assets/images/signin-icon.png" alt="Sign In" width={16} height={16} className="profile-item-icon" />
-                 Sign In
-               </div>
+                                                              <div className="profile-item" onClick={() => handleProfileMenuItemClick('signin')}>
+                    <i className="fas fa-sign-in-alt" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Sign In
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('account')}>
-                 <Image src="/assets/images/account-icon.png" alt="Account" width={16} height={16} className="profile-item-icon" />
-                 Your Account
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('account')}>
+                    <i className="fas fa-user" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Your Account
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('enrich')}>
-                 <Image src="/assets/images/enrich-icon.png" alt="Enrich" width={16} height={16} className="profile-item-icon" />
-                 Enrich Your Profile
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('enrich')}>
+                    <i className="fas fa-user-edit" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Enrich Your Profile
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('reset')}>
-                 <Image src="/assets/images/reset-icon.png" alt="Reset" width={16} height={16} className="profile-item-icon" />
-                 Reset Password
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('reset')}>
+                    <i className="fas fa-key" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Reset Password
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('settings')}>
-                 <Image src="/assets/images/settings-icon.png" alt="Settings" width={16} height={16} className="profile-item-icon" />
-                 Settings
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('settings')}>
+                    <i className="fas fa-cog" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Settings
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('theme')}>
-                 <Image src="/assets/images/theme-icon.png" alt="Theme" width={16} height={16} className="profile-item-icon" />
-                 Theme Toggle
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('theme')}>
+                    <i className="fas fa-adjust" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Theme Toggle
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('support')}>
-                 <Image src="/assets/images/support-icon.png" alt="Support" width={16} height={16} className="profile-item-icon" />
-                 Support
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('support')}>
+                    <i className="fas fa-life-ring" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Support
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('about')}>
-                 <Image src="/assets/images/about-icon.png" alt="About" width={16} height={16} className="profile-item-icon" />
-                 About Drishiq
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('about')}>
+                    <i className="fas fa-info-circle" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    About Drishiq
+                  </div>
 
-               <div className="profile-item" onClick={() => handleProfileMenuItemClick('logout')}>
-                 <Image src="/assets/images/logout-icon.png" alt="Logout" width={16} height={16} className="profile-item-icon" />
-                 Log Out
-               </div>
+                  <div className="profile-item" onClick={() => handleProfileMenuItemClick('logout')}>
+                    <i className="fas fa-sign-out-alt" style={{marginRight: '12px', color: '#0B4422'}}></i>
+                    Log Out
+                  </div>
             </div>
           </div>
         </div>
@@ -744,4 +793,4 @@ const HeaderUpdated: React.FC = () => {
   );
 };
 
-export default HeaderUpdated; 
+export default Header; 
