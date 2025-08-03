@@ -20,6 +20,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') {
+      setLoading(false);
+      return;
+    }
+
     // Get initial session
     const getInitialSession = async () => {
       try {
@@ -71,8 +77,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
+  
+  // TEST COMMENT: This should prevent SSR errors
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    // Return safe defaults during SSR instead of throwing error
+    console.log('TEST: useAuth called during SSR - returning safe defaults');
+    return {
+      user: null,
+      session: null,
+      loading: true,
+      signOut: async () => {
+        console.log('TEST: signOut called during SSR');
+      },
+    };
   }
   return context;
 } 

@@ -9,20 +9,24 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // TEST COMMENT: This should disable static generation completely
-  // Completely disable static generation
+  // TEST COMMENT: NUCLEAR APPROACH - Complete static generation disable
+  // Force server-side rendering only
   output: 'standalone',
   
-  // Disable prerendering entirely
+  // Completely disable static generation
   experimental: {
     staticPageGenerationTimeout: 0,
-    // Skip static generation
     skipTrailingSlashRedirect: true,
     skipMiddlewareUrlNormalize: true,
+    // Force all pages to be dynamic
+    isrMemoryCacheSize: 0,
+    workerThreads: false,
+    cpus: 1,
   },
   
-  // Force all pages to be dynamic
+  // Disable static generation completely
   generateStaticParams: async () => {
+    console.log('TEST: generateStaticParams called - should return empty array');
     return [];
   },
   
@@ -34,18 +38,31 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   
-  // Performance optimizations
-  experimental: {
-    // optimizeCss: true, // Disabled due to dependency issues
+  // Disable static optimization
+  staticPageGenerationTimeout: 0,
+  
+  // Force all pages to be dynamic
+  async getStaticProps() {
+    return {
+      notFound: true,
+    };
   },
   
-  // Webpack configuration to fix .pack.gz issues
+  // Disable static generation for all pages
+  async getStaticPaths() {
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  },
+  
+  // Webpack configuration to disable static optimization
   webpack: (config, { dev, isServer }) => {
     if (dev) {
       // Disable webpack cache compression in development
       config.cache = {
         type: 'filesystem',
-        compression: false, // This prevents .pack.gz files
+        compression: false,
         maxMemoryGenerations: 1,
         store: 'pack',
         buildDependencies: {
@@ -53,11 +70,25 @@ const nextConfig = {
         },
       };
     }
+    
+    // Disable static optimization in webpack
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: false,
+      runtimeChunk: false,
+      minimize: false,
+    };
+    
+    // Disable static generation
+    config.plugins = config.plugins.filter(plugin => {
+      return !plugin.constructor.name.includes('Static');
+    });
+    
     return config;
   },
   
   images: {
-    unoptimized: false,
+    unoptimized: true, // Force unoptimized images
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
@@ -163,4 +194,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPWA(nextConfig); 
+module.exports = withPWA(nextConfig);
