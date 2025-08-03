@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { LanguageProvider } from '../lib/drishiq-i18n';
 import { LandingCardsProvider } from '../lib/landing-cards-context';
 import './globals.css';
+import { AuthProvider } from '../lib/auth-context';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.drishiq.com'),
@@ -82,11 +83,13 @@ export default function RootLayout({
       <body className="font-sans flex flex-col min-h-full bg-gradient-to-b from-white via-[#F5F7F6] to-[#F0F2F1]">
         {/* Main Content Section - Header/Footer added individually per page */}
         <main className="flex-grow flex flex-col">
-          <LanguageProvider>
-            <LandingCardsProvider>
-              {children}
-            </LandingCardsProvider>
-          </LanguageProvider>
+          <AuthProvider>
+            <LanguageProvider>
+              <LandingCardsProvider>
+                {children}
+              </LandingCardsProvider>
+            </LanguageProvider>
+          </AuthProvider>
         </main>
 
         {/* Temporarily disabled to prevent API errors

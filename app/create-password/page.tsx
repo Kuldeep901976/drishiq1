@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 export default function CreatePasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
