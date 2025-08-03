@@ -1,4 +1,5 @@
 // Next.js Configuration File
+// TEST COMMENT: If you see this comment, changes are being applied
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -8,16 +9,30 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove trailingSlash for server-side rendering
-  // trailingSlash: true, // Comment this out
+  // TEST COMMENT: This should disable static generation completely
+  // Completely disable static generation
+  output: 'standalone',
+  
+  // Disable prerendering entirely
+  experimental: {
+    staticPageGenerationTimeout: 0,
+    // Skip static generation
+    skipTrailingSlashRedirect: true,
+    skipMiddlewareUrlNormalize: true,
+  },
+  
+  // Force all pages to be dynamic
+  generateStaticParams: async () => {
+    return [];
+  },
+  
+  // Disable static export completely
+  trailingSlash: false,
   
   // Add ESLint disable to prevent hook rule violations during build
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
-  // Disable static export - use server-side rendering
-  output: 'standalone',
   
   // Performance optimizations
   experimental: {
