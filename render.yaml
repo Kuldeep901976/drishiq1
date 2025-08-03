@@ -4,6 +4,7 @@ services:
     env: node
     buildCommand: npm install && npm run build
     startCommand: npm start
+    # Add this to ensure server-side rendering
     envVars:
       - key: NODE_ENV
         value: production

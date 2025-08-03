@@ -8,13 +8,16 @@ const withPWA = require('next-pwa')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export is handled separately for mobile builds
-  trailingSlash: true,
+  // Remove trailingSlash for server-side rendering
+  // trailingSlash: true, // Comment this out
   
   // Add ESLint disable to prevent hook rule violations during build
   eslint: {
     ignoreDuringBuilds: true,
   },
+  
+  // Disable static export - use server-side rendering
+  output: 'standalone',
   
   // Performance optimizations
   experimental: {
