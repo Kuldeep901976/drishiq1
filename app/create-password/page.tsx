@@ -3,6 +3,7 @@
 export const dynamic = 'force-dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { FlowController } from '@/lib/flow-controller';
 
 export default function CreatePasswordPage() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function CreatePasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const flowController = FlowController.getInstance();
 
   useEffect(() => {
     const checkFlow = async () => {
@@ -21,7 +23,7 @@ export default function CreatePasswordPage() {
       }
     };
     checkFlow();
-  }, [router]);
+  }, [router, flowController]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
