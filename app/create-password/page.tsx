@@ -3,6 +3,7 @@
 export const dynamic = 'force-dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { FlowController } from '@/lib/flow-controller';
 import { supabase } from '@/lib/supabase';
 
