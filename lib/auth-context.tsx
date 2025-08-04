@@ -78,17 +78,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
   
-  // TEST COMMENT: This should prevent SSR errors
+  // Return safe defaults during SSR instead of throwing error
   if (context === undefined) {
-    // Return safe defaults during SSR instead of throwing error
-    console.log('TEST: useAuth called during SSR - returning safe defaults');
     return {
       user: null,
       session: null,
       loading: true,
-      signOut: async () => {
-        console.log('TEST: signOut called during SSR');
-      },
+      signOut: async () => {},
     };
   }
   return context;
