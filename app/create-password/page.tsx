@@ -2,12 +2,12 @@
 
 export const dynamic = 'force-dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
 import { FlowController } from '@/lib/flow-controller';
 import { supabase } from '@/lib/supabase';
 
-export default function CreatePasswordPage() {
+function CreatePasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = (key: string) => key;
@@ -103,13 +103,13 @@ export default function CreatePasswordPage() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0B4422] focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B4422] focus:border-transparent"
+              placeholder={t('passwordPlaceholder')}
               required
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-8">
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
               {t('confirmPasswordLabel')}
             </label>
@@ -118,8 +118,8 @@ export default function CreatePasswordPage() {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="••••••••"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0B4422] focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B4422] focus:border-transparent"
+              placeholder={t('confirmPasswordPlaceholder')}
               required
             />
           </div>
@@ -127,12 +127,27 @@ export default function CreatePasswordPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full px-6 py-3 bg-[#0B4422] text-white rounded-lg hover:bg-[#083318] transition-colors disabled:opacity-50"
+            className="w-full bg-[#0B4422] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#0A3A1D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? t('creating') : t('createPassword')}
+            {isLoading ? t('creatingPassword') : t('createPasswordButton')}
           </button>
         </form>
       </div>
     </div>
+  );
+}
+
+export default function CreatePasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0B4422] mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <CreatePasswordContent />
+    </Suspense>
   );
 }
