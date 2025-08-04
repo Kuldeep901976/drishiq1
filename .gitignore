@@ -17,6 +17,9 @@ out/
 dist/
 build/
 
+# Supabase Edge Functions (Deno runtime - not compatible with Next.js build)
+supabase/functions/
+
 # Runtime data
 pids
 *.pid
