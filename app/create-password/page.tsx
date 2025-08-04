@@ -1,12 +1,8 @@
 'use client';
 
-import { flowController } from '@/lib/flow-controller';
-import { supabase } from '@/lib/supabase';
-import Image from 'next/image';
+export const dynamic = 'force-dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-export const dynamic = 'force-dynamic';
 
 export default function CreatePasswordPage() {
   const router = useRouter();
