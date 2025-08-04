@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FlowController } from '@/lib/flow-controller';
+import { supabase } from '@/lib/supabase';
 
 export default function CreatePasswordPage() {
   const router = useRouter();
