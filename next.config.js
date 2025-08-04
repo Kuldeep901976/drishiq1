@@ -31,6 +31,19 @@ const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     console.log("✅ Webpack config called!");
     
+    // Exclude Supabase Edge Functions from build
+    config.externals = config.externals || [];
+    config.externals.push({
+      'https://deno.land/std@0.168.0/http/server.ts': 'commonjs https://deno.land/std@0.168.0/http/server.ts',
+      'https://esm.sh/@supabase/supabase-js@2': 'commonjs https://esm.sh/@supabase/supabase-js@2'
+    });
+    
+    // Ignore Supabase functions directory
+    config.module.rules.push({
+      test: /supabase\/functions/,
+      use: 'ignore-loader'
+    });
+    
     if (dev) {
       config.cache = {
         type: 'filesystem',
