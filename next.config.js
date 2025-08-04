@@ -16,10 +16,9 @@ const nextConfig = {
   // Force server-side rendering
   output: 'standalone',
   
-  // Disable static generation
+  // Remove deprecated experimental options
   experimental: {
-    serverActions: true,
-    staticPageGenerationTimeout: 0,
+    // serverActions is now enabled by default, no need to specify
   },
   
   // Add ESLint disable to prevent hook rule violations during build
@@ -86,8 +85,7 @@ const nextConfig = {
     domains: ['via.placeholder.com'],
   },
   
-  // Performance optimizations
-  swcMinify: false,
+  // Performance optimizations - remove swcMinify warning
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
