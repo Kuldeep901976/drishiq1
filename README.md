@@ -106,4 +106,4 @@ For deployment issues, check:
 To update the deployment:
 1. Push changes to your repository
 2. Render will automatically rebuild
-3. Check deployment logs for any issues 
+3. Check deployment logs for any issues "# Force new deployment with build script fix" 
