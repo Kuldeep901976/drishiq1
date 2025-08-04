@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-
+    "build": "find . -name 'supabase' -type d -exec rm -rf {} + 2>/dev/null || true && next build",
     "start": "next start",
     "lint": "next lint"
   },
