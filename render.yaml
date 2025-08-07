@@ -1,13 +1,13 @@
 services:
   - type: web
-    name: drishiq-app
+    name: drishiq-preprod
     env: node
     buildCommand: npm install && npm run build
     startCommand: npm start
     # Add this to ensure server-side rendering
     envVars:
       - key: NODE_ENV
-        value: production
+        value: preprod
       - key: NEXT_PUBLIC_SUPABASE_URL
         sync: false
       - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -51,4 +51,4 @@ services:
       - key: NEXT_PUBLIC_GA_ID
         sync: false
       - key: NEXT_PUBLIC_APP_URL
-        sync: false 
+        value: https://drishiq-preprod.onrender.com 

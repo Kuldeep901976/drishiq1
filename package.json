@@ -1,12 +1,17 @@
 {
-  "name": "drishiq",
+  "name": "drishiq-preprod",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:preprod": "jest --config jest.preprod.config.js",
+    "deploy:preprod": "node drishiq-cli.js deploy preprod",
+    "health:check": "curl -f $NEXT_PUBLIC_APP_URL/api/health",
+    "health:check:preprod": "npm run health:check"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.1",
